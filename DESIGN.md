@@ -31,7 +31,8 @@ The initial design will not pull any data from Open Library for now.
 Instead, will download ~16GB dump of their data and put that into PostgreSQL.
 In the future will look at what is already in PostgreSQL and if the ISBN is not
 there, then will go using the API.
-The schema definition is located https://github.com/internetarchive/openlibrary-client/tree/master/olclient/schemata.
+The schema definition is located
+https://github.com/internetarchive/openlibrary-client/tree/master/olclient/schemata.
 Open Library already have tools to import this data into PostgreSQL located
 https://github.com/LibrariesHacked/openlibrary-search so I will make use of
 their tools.

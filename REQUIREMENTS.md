@@ -44,7 +44,7 @@ The interface should be able to do the following:
 ### Add Book
 
 Initially by ISBN barcode.
-The info to add should be similar to the the information in the CSV file from
+The info to add should be similar to the information in the CSV file from
 the Apple Shortcut.
 Optionally there should be a way to add a book by title and author as well.
 
