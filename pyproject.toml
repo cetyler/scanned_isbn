@@ -5,7 +5,9 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "click>=8.2.1",
     "duckdb>=1.2.2",
     "log-to-db>=0.1.0",
     "pytest>=8.3.5",
+    "trogon>=0.6.0",
 ]
