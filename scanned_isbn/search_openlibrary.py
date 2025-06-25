@@ -27,5 +27,4 @@ def main(search_type: str, search_entry: str, input_file: Path):
         print("Unknown search type")
 
 
-    # print(book.fetchall())
     book.show()
