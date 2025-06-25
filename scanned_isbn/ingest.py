@@ -8,10 +8,13 @@ class DataIngest:
     authors_file: Path
     editions_file: Path
     output_file: Path
+    scanned_isbn_file: Path
     max_line_size: int = 10000000
 
     def initialize_db(self):
         self.connection = duckdb.connect(database = f"{self.output_file}")
+    def drop_table(self, table_name):
+        self.connection.sql(f"drop table if exists {table_name};")
     def load_authors(self) -> None:
         self.connection.sql(f"""
                    create table authors as
@@ -61,5 +64,31 @@ select column1[8:] as book_id
       from read_csv(f'{self.editions_file}', max_line_size=self.max_line_size)
       );
         """)
+
+    def create_personal_library(self):
+        self.connection.sql(f"""
+        create table library (
+         entry timestamptz default now()
+        ,location text
+        ,barcode text
+        ,ownership_status text
+        ,comment text
+        ,primary key(barcode)
+        );
+        """)
+
+    def update_personal_library(self):
+        self.connection.sql(f"""
+        insert or replace into library (entry, location, barcode, ownership_status, comment)
+          select current_timestamp
+                ,location
+                ,barcode
+                ,status
+                ,comment
+            from read_csv('{self.scanned_isbn_file}')
+        order by current_timestamp;
+        """
+        )
+
 
         
