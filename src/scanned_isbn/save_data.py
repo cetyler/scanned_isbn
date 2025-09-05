@@ -8,16 +8,16 @@ import sys
 @click.command()
 @click.argument("data_type",
                 type=click.Choice(["authors","editions","library"]),
-                help="Note that library is your personal library.",
+                # help="Note that library is your personal library.",
                 )
 @click.argument('input_file',
               type=click.Path(exists=True),
-              help="The input file should match the type of data being inserted.",
+              # help="The input file should match the type of data being inserted.",
               )
 @click.argument('output_file',
               default=Path.cwd() / "data" / "openlibrary.duckdb",
               type=click.Path(exists=True),
-              help="The database to save the data to.",
+              # help="The database to save the data to.",
               )
 @click.option("--initialize",
                 is_flag=True,
@@ -38,7 +38,7 @@ def main(data_type: str, input_file: Path, output_file: Path, initialize: bool) 
             data.create_personal_library()
 
 
-    if data_type == "author":
+    if data_type == "authors":
         data.authors_file = input_file
         data.load_authors()
     elif data_type == "editions":

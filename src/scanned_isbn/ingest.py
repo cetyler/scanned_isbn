@@ -30,8 +30,8 @@ class DataIngest:
                           ,json_extract_string(column4, '$.date') as date
                           ,json_extract_string(column4, '$.links') as links
                       from (select *
-                          from read_csv(f'{self.authors_file}', max_line_size=self.max_line_size)
-                          );)
+                          from read_csv('{self.authors_file}', max_line_size={self.max_line_size})
+                          );
     """)
 
     def load_editions(self) -> None:
@@ -61,7 +61,7 @@ select column1[8:] as book_id
       ,json_extract(column4, '$.isbn_13') as isbn_13
       ,json_extract(column4, '$.isbn_10') as isbn_10
   from (select *
-      from read_csv(f'{self.editions_file}', max_line_size=self.max_line_size)
+      from read_csv('{self.editions_file}', max_line_size={self.max_line_size})
       );
         """)
 
