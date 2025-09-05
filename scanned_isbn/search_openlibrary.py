@@ -8,7 +8,7 @@ from trogon import tui
 @click.argument("search_type",
                 type=click.Choice(["author","title","isbn"])
                 )
-@click.argument("search_entry")
+@click.argument("search_entry",type=str)
 @click.option('--input_file',
               default=Path.cwd() / "data" / "openlibrary.db",
               type=click.Path(exists=True),

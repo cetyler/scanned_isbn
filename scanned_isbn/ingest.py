@@ -5,10 +5,10 @@ from pathlib import Path
 
 @dataclass
 class DataIngest:
-    authors_file: Path
-    editions_file: Path
-    output_file: Path
-    scanned_isbn_file: Path
+    authors_file: Path = Path.cwd() / "data" / "authors.csv"
+    editions_file: Path = Path.cwd() / "data" / "editions.csv"
+    output_file: Path = Path.cwd() / "data" / "openlibrary.duckdb"
+    scanned_isbn_file: Path = Path.cwd() / "data" / "openlibrary.duckdb"
     max_line_size: int = 10000000
 
     def initialize_db(self):
